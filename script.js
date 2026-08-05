@@ -5,6 +5,8 @@ const status = document.getElementById("status");
 const SpeechRecognition = 
 window.SpeechRecognition || window.webkitSpeechRecognition;
 
+
+// ---- Microphone listening functionality------
 // Speech recognizer object;
 const recognition = new SpeechRecognition();
 
@@ -25,11 +27,23 @@ micBtn.addEventListener("click", () => {
 });
 
 
+// -------After Listening---------------------
 
+// after listening , browser API says 
+// "Hey! I recognized something." inside (event) package
 recognition.onresult = (event) => {
+
+//   event
+//  └── results
+//       └── first result
+//            └── first alternative 
+//                 └── transcript
+//                      "Hey There"
    const transcript = event.results[0][0].transcript;
+
 
    console.log(transcript);
 
-   status.textContent = `You speak ${transcript}`
+  //  status becomes : "Hey There"
+   status.textContent = `You said :  ${transcript}`
 }
