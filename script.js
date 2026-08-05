@@ -16,9 +16,20 @@ recognition.interimResults = false;
 // listen once then automatic stop.
 recognition.continuous = false;
 
+
+// Mic-Button functionality
 micBtn.addEventListener("click", () => {
   status.textContent = "Status: Listening..."
   // microphone will start listening
   recognition.start();
 });
 
+
+
+recognition.onresult = (event) => {
+   const transcript = event.results[0][0].transcript;
+
+   console.log(transcript);
+
+   status.textContent = `You speak ${transcript}`
+}
