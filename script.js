@@ -1,5 +1,6 @@
 const micBtn = document.getElementById("micBtn");
 const status = document.getElementById("status");
+const chatBox = document.getElementById("chatBox");
 
 //Find the Speech Recognition class(blueprint,factory) and store it in SpeechRecognition. factory knows how to build speech recognier
 const SpeechRecognition = 
@@ -44,6 +45,10 @@ recognition.onresult = (event) => {
 
    console.log(transcript);
 
+   chatBox.innerHTML += `
+       <p><strong>You:</strong> ${transcript}</p>
+   `;
+
   //  status becomes : "Hey There"
-   status.textContent = `You said :  ${transcript}`
+   status.textContent = "You said :  Waiting..."
 }
