@@ -48,7 +48,45 @@ recognition.onresult = (event) => {
    chatBox.innerHTML += `
        <p><strong>You:</strong> ${transcript}</p>
    `;
+   askGemini(transcript);
 
   //  status becomes : "Hey There"
    status.textContent = "You said :  Waiting..."
+}
+
+
+// connect API & send user message & recieve AI response
+async function askGemini(userMessage){
+  const response = await fetch("/.netlify/functions/askGemini",
+    {
+      // There are two common request types:
+      // GET-->"Give me information."
+      // POST -->"Here is some information.
+      //  Please process it."
+      method: "POST",
+
+      // This tells Gemini: "I'm sending JSON data."
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      //JavaScript objects--> into a JSON string.
+      body: JSON.stringify({
+
+        // simply means:-->
+        // Send this text to Gemini.
+        contents: [
+          {
+            message: userMessage
+          }
+        ]
+      })
+    }
+  );
+
+  // Gemini replies with JSON.
+  // We convert that JSON into a JavaScript object
+  //  so we can use it.
+  const data = await response.json();
+  console.log(data)
 }
