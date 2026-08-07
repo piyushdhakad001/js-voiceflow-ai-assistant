@@ -88,5 +88,5 @@ async function askGemini(userMessage){
   // We convert that JSON into a JavaScript object
   //  so we can use it.
   const data = await response.json();
-  console.log(data)
+  alert(data);
 }
