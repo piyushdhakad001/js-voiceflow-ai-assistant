@@ -75,11 +75,7 @@ async function askGemini(userMessage){
 
         // simply means:-->
         // Send this text to Gemini.
-        contents: [
-          {
             message: userMessage
-          }
-        ]
       })
     }
   );
