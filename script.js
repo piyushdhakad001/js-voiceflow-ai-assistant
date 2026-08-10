@@ -80,6 +80,10 @@ async function askGemini(userMessage){
     }
   );
 
+   chatBox.innerHTML += `
+       <p><strong>You:</strong> ${data}</p>
+   `;
+
   // Gemini replies with JSON.
   // We convert that JSON into a JavaScript object
   //  so we can use it.

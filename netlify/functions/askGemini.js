@@ -24,7 +24,24 @@ exports.handler = async (event) => {
   );
 
   const data = await response.json();
-  const aiResponse = await data.candidates[0].content.parts[0].text;
+
+  // extract only ai response text from whole data package
+  // data
+//  ↓
+// candidates
+//  ↓
+// [0]                 → first answer
+//  ↓
+// content
+//  ↓
+// parts
+//  ↓
+// [0]                 → first piece of text
+//  ↓
+// text                → actual AI answer
+
+// "Go inside Gemini's response and get the actual text of its first answer."
+  const aiResponse = data.candidates[0].content.parts[0].text;
 
   return {
     statusCode: 200,
