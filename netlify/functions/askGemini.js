@@ -24,7 +24,7 @@ exports.handler = async (event) => {
   );
 
   const data = await response.json();
-  const aiResponse = await data.candidate[0].content.parts[0].text;
+  const aiResponse = await data.candidates[0].content.parts[0].text;
 
   return {
     statusCode: 200,
