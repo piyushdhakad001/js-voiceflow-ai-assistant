@@ -23,11 +23,12 @@ exports.handler = async (event) => {
     }
   );
 
-  const data = await response.json();
+  // const data = await response.json();
+  const aiResponse = await data.candidate[0].content.parts[0].text;
 
   return {
     statusCode: 200,
-    body: JSON.stringify(data),
+    body: JSON.stringify(aiResponse),
   };
 
 }
