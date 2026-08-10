@@ -40,8 +40,8 @@ recognition.onresult = (event) => {
 //            └── first alternative 
 //                 └── transcript
 //                      "Hey There"
-  //  const transcript = event.results[0][0].transcript;
-  const transcript = 'hello';
+   const transcript = event.results[0][0].transcript;
+  
 
 
    console.log(transcript);
@@ -52,7 +52,7 @@ recognition.onresult = (event) => {
    askGemini(transcript);
 
   //  status becomes : "Hey There"
-   status.textContent = "You said :  Waiting..."
+   status.textContent = "Status: Thinking...";
 }
 
 
@@ -81,13 +81,16 @@ async function askGemini(userMessage){
     }
   );
 
-   chatBox.innerHTML += `
-       <p><strong>You:</strong> ${data}</p>
-   `;
+ 
 
   // Gemini replies with JSON.
   // We convert that JSON into a JavaScript object
   //  so we can use it.
   const data = await response.json();
+
+    chatBox.innerHTML += `
+       <p><strong>You:</strong> ${data}</p>
+   `;
+
   alert(JSON.stringify(data));
 }

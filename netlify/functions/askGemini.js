@@ -43,6 +43,7 @@ exports.handler = async (event) => {
 // "Go inside Gemini's response and get the actual text of its first answer."
   const aiResponse = data.candidates[0].content.parts[0].text;
 
+
   return {
     statusCode: 200,
     body: JSON.stringify(aiResponse),
