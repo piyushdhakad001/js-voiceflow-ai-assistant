@@ -40,7 +40,8 @@ recognition.onresult = (event) => {
 //            └── first alternative 
 //                 └── transcript
 //                      "Hey There"
-   const transcript = event.results[0][0].transcript;
+  //  const transcript = event.results[0][0].transcript;
+  const transcript = 'hello';
 
 
    console.log(transcript);
